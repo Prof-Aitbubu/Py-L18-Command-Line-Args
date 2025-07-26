@@ -1,0 +1,229 @@
+Awesome! 🤓 Here are **5 simple and useful practice tasks** with command line arguments — great for both **DevOps** and **Backend** learners:
+
+---
+
+### ✅ 1. **Environment-Based Message**
+
+**Task:** Write a script that takes an environment name (`dev`, `staging`, or `prod`) and prints a different message for each.
+
+```bash
+python env_message.py dev
+```
+
+📌 **Goal:** Practice using `sys.argv` to switch behavior based on input.
+
+---
+
+### ✅ 2. **Log File Reader**
+
+**Task:** Create a script that takes a log file name as a command line argument and prints the first 5 lines.
+
+```bash
+python read_logs.py nginx.log
+```
+
+📌 **Goal:** Read from a file based on user input — common in log monitoring.
+
+---
+
+### ✅ 3. **Auto User Creator**
+
+**Task:** Make a script that takes a number (like `10`) and prints that many fake usernames (e.g., `user_1`, `user_2`, ...).
+
+```bash
+python create_users.py 10
+```
+
+📌 **Goal:** Great for backend testing scripts or user seeding in databases.
+
+---
+
+### ✅ 4. **Service Restarter**
+
+**Task:** Write a script that takes a service name and prints a fake restart message:
+
+```bash
+python restart.py nginx
+```
+
+👉 Output:
+
+```
+Restarting nginx... Done!
+```
+
+📌 **Goal:** Simulate what DevOps scripts often do with services like Nginx, MySQL, etc.
+
+---
+
+### ✅ 5. **Math Tool: Multiply Numbers**
+
+**Task:** Take 2 numbers from the command line and multiply them.
+
+```bash
+python multiply.py 4 5
+```
+
+👉 Output:
+
+```
+The result is: 20
+```
+
+📌 **Goal:** Practice converting arguments to `int` and using multiple inputs.
+
+---
+
+### 💡 Bonus Challenge (Optional):
+
+Combine ideas: Write a script that takes:
+
+* A command (like `add`, `sub`, `mul`, `div`)
+* Two numbers
+
+```bash
+python calculator.py add 3 5
+```
+
+👉 Output:
+
+```
+Result: 8
+```
+
+Perfect! 🙌 Here's the solution code for **all 5 tasks** using `sys.argv` — written in a super simple, beginner-friendly way 💻:
+
+---
+
+### ✅ 1. Environment-Based Message (`env_message.py`)
+
+```python
+import sys
+
+env = sys.argv[1]
+
+if env == 'dev':
+    print("You are in the Development environment.")
+elif env == 'staging':
+    print("You are in the Staging environment.")
+elif env == 'prod':
+    print("You are in the Production environment.")
+else:
+    print("Unknown environment.")
+```
+
+📦 **Run it like this:**
+
+```bash
+python env_message.py dev
+```
+
+### ✅ 2. Log File Reader (`read_logs.py`)
+
+```python
+import sys
+
+filename = sys.argv[1]
+
+try:
+    with open(filename, 'r') as file:
+        for i in range(5):
+            line = file.readline()
+            if line == '':
+                break
+            print(line.strip())
+except FileNotFoundError:
+    print("Log file not found.")
+```
+
+📦 **Run it like this:**
+
+```bash
+python read_logs.py sample.log
+```
+
+### ✅ 3. Auto User Creator (`create_users.py`)
+
+```python
+import sys
+
+count = int(sys.argv[1])
+
+for i in range(1, count + 1):
+    print(f"user_{i}")
+```
+
+📦 **Run it like this:**
+
+```bash
+python create_users.py 10
+```
+
+### ✅ 4. Service Restarter (`restart.py`)
+
+```python
+import sys
+
+service = sys.argv[1]
+
+print(f"Restarting {service}...")
+print("Done!")
+```
+
+📦 **Run it like this:**
+
+```bash
+python restart.py nginx
+```
+
+### ✅ 5. Math Tool: Multiply Numbers (`multiply.py`)
+
+```python
+import sys
+
+num1 = int(sys.argv[1])
+num2 = int(sys.argv[2])
+
+result = num1 * num2
+print("The result is:", result)
+```
+
+📦 **Run it like this:**
+
+```bash
+python multiply.py 4 5
+```
+
+### 🌟 BONUS: Simple Calculator (`calculator.py`)
+
+```python
+import sys
+
+operation = sys.argv[1]
+a = int(sys.argv[2])
+b = int(sys.argv[3])
+
+if operation == "add":
+    print("Result:", a + b)
+elif operation == "sub":
+    print("Result:", a - b)
+elif operation == "mul":
+    print("Result:", a * b)
+elif operation == "div":
+    if b != 0:
+        print("Result:", a / b)
+    else:
+        print("Cannot divide by zero!")
+else:
+    print("Unknown operation.")
+```
+
+📦 **Run it like this:**
+
+```bash
+python calculator.py mul 6 7
+```
+
+
+
+
